@@ -1,23 +1,27 @@
-// 1. Importaciones
 const express = require('express');
 const cors = require('cors');
-
-const authRoutes = require('./routes/authRoutes');
 const actoresRoutes = require('./routes/actoresRoutes');
+const usuariosRoutes = require('./routes/usuariosRoutes');
 
-// 2. Inicializar la app
+
 const app = express();
+const PORT = 4000;
 
-// 3. Middlewares
+// Middlewares
 app.use(cors());
-app.use(express.json()); // Reemplaza a body-parser
+app.use(express.json());
 
-// 4. Rutas principales
-app.use('/api/auth', authRoutes);
+
+// Rutas
 app.use('/api/actores', actoresRoutes);
+app.use('/api/auth', usuariosRoutes);
 
-// 5. Servidor
-const PORT = 3000;
+// Ruta de prueba
+app.get('/', (req, res) => {
+  res.send('API de Cúpula Films está funcionando 🎬');
+});
+
+// Iniciar servidor
 app.listen(PORT, () => {
   console.log(`Servidor backend en ejecución en http://localhost:${PORT}`);
 });

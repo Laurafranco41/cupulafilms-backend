@@ -6,8 +6,8 @@ const {
   eliminarActor
 } = require('../controllers/actoresController');
 
-router.get('/', obtenerActores);
-router.post('/', crearActor);
-router.delete('/:id', eliminarActor);
+router.get('/', obtenerActores);      // GET /api/actores
+router.post('/', crearActor);         // POST /api/actores
+router.delete('/:id', eliminarActor); // DELETE /api/actores/:id
 
 module.exports = router;
